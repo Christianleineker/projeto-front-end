@@ -1,0 +1,49 @@
+{
+  "compilerOptions": {
+    /* Basic Options */
+    "target": "ES2020",                          // Define o padrão JavaScript de saída (ex: ES5, ES6/ES2015, ES2020, etc)
+    "module": "commonjs",                        // Define o sistema de módulos (commonjs, esnext, etc)
+    "lib": ["ES2020", "DOM", "DOM.Iterable", "ESNext"],                    // Bibliotecas padrão a serem incluídas na compilação
+    "allowJs": false,                            // Permite compilar arquivos JavaScript
+    "checkJs": false,                            // Verifica erros em arquivos JS
+    "outDir": "build",                          // Pasta de saída dos arquivos compilados
+    "rootDir": "src",                          // Pasta raiz dos arquivos de entrada
+    "removeComments": false,                     // Remove comentários na saída
+    "noEmit": false,                             // Não gera saída, apenas verifica erros
+    "incremental": true,                         // Compilação incremental
+
+    /* Strict Type-Checking Options */
+    "strict": true,                              // Ativa todas as verificações de tipo estritas
+    "noImplicitAny": true,                       // Erro ao usar tipos `any` implícitos
+    "strictNullChecks": true,                    // Verifica valores `null` e `undefined`
+    "strictFunctionTypes": true,                 // Verifica compatibilidade exata entre funções
+    "strictBindCallApply": true,                 // Verifica os métodos bind, call e apply
+    "noImplicitThis": true,                      // Erro ao usar `this` com tipo implícito `any`
+    "alwaysStrict": true,                        // Inclui `"use strict"` nos arquivos
+
+    /* Module Resolution Options */
+    "moduleResolution": "node",                  // Estrutura de resolução de módulos (classic ou node)
+    "baseUrl": "./",                             // Base para resolver módulos relativos
+    "paths": {
+      "*": ["node_modules/*"]
+    },                                           // Mapeamento de caminhos (útil para aliases)
+    "esModuleInterop": true,                     // Habilita interoperabilidade entre módulos CommonJS e ESModules
+    "forceConsistentCasingInFileNames": true,    // Garante que nomes de arquivos coincidam em maiúsculas/minúsculas
+
+    /* Source Map Options */
+    "sourceMap": true,                           // Gera arquivos `.map` para depuração
+    "inlineSources": true,                       // Inclui código TypeScript original nos source maps
+
+    /* Experimental Options */
+    "experimentalDecorators": true,              // Suporte para decoradores
+    "emitDecoratorMetadata": true                // Emite metadados para decoradores
+
+    /* Advanced Options (desnecessários na maioria dos casos) */
+    // "skipLibCheck": true,                     // Pula checagem de tipo nos arquivos da pasta node_modules
+    // "declaration": true,                     // Gera arquivos `.d.ts` com declarações de tipo
+    // "noUnusedLocals": true,                  // Erro para variáveis locais não usadas
+    // "noUnusedParameters": true               // Erro para parâmetros não utilizados
+  },
+  "include": ["src", "build/index.js"],                            // Quais pastas incluir
+  "exclude": ["node_modules", "build"]            // Quais pastas ignorar
+}
