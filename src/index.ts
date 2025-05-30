@@ -50,11 +50,11 @@ function menu(): void {
       break;
 
     case 6:
-
+      lerNumerosArray();
       break;
 
     case 7:
-
+      encontrarMaiorNumero();
       break;
 
     case 8:
@@ -88,7 +88,7 @@ function menu(): void {
       break;
 
     case 14:
-
+      mostrarTabuada()
       break;
 
     case 15:
@@ -100,7 +100,7 @@ function menu(): void {
       break;
 
     case 17:
-
+      mostrarJogoDeAdivinhacao();
       break;
 
     case 18:
@@ -117,7 +117,7 @@ function menu(): void {
 }
 
 
-// 1 - Soma de dois números - Gabriel
+// 1 - Soma de dois números
 
 function somarDoisNumeros(): void {
   const a = readlineSync.questionInt("Digite o primeiro número: ");
@@ -125,7 +125,7 @@ function somarDoisNumeros(): void {
   console.log(`Resultado: ${a + b}`);
 }
 
-// 2 - Verificar par ou impar - Gabriel
+// 2 - Verificar par ou impar
 
 function verificarParOuImpar(): void {
   const numero = readlineSync.questionInt("Digite um número: ");
@@ -137,7 +137,7 @@ function verificarParOuImpar(): void {
   }
 }
 
-// 3 - Calcular média de três notas - Gabriel
+// 3 - Calcular média de três notas
 
 function calcularMedia(): void {
   const a = readlineSync.questionInt("Digite a primeira nota: ");
@@ -150,7 +150,7 @@ function calcularMedia(): void {
 }
 
 
-// 4 - Converter Celsius para Fahrenheit - Francisco Jose
+// 4 - Converter Celsius para Fahrenheit
 
 
 function converterCelsiusParaFahrenheit(): void {
@@ -167,7 +167,7 @@ function converterCelsiusParaFahrenheit(): void {
   });
 }
 
-// 5 - Exibir números pares de 1 a 20 - Francisco Jose
+// 5 - Exibir números pares de 1 a 20
 
 function numerosPares() {
   console.log("Números pares de 1 a 20:");
@@ -179,17 +179,77 @@ function numerosPares() {
 }
 
 
-// 6 - Ler 5 números e armazenar em array - Kaua
+// 6 - Ler 5 números e armazenar em array
+
+function lerNumerosArray() {
+  const rl = readline.createInterface({
+    input: process.stdin,
+    output: process.stdout,
+  });
+
+  const numeros: number[] = [];
+  let contador = 0;
+
+  function pedirNumero() {
+    if (contador < 5) {
+      rl.question(`Digite o número ${contador + 1}: `, (entrada) => {
+        const numero = Number(entrada);
+        if (!isNaN(numero)) {
+          numeros.push(numero);
+          contador++;
+          pedirNumero();
+        } else {
+          console.log("Por favor, digite um número válido.");
+          pedirNumero();
+        }
+      });
+    } else {
+      rl.close();
+      console.log("Números digitados:", numeros);
+    }
+  }
+
+  pedirNumero();
+}
 
 
+// 7 - Encontrar maior número em um array
+
+function encontrarMaiorNumero() {
+  const rl = readline.createInterface({
+    input: process.stdin,
+    output: process.stdout,
+  });
+
+  const numeros: number[] = [];
+  let contador = 0;
+
+  function pedirNumero() {
+    if (contador < 5) {
+      rl.question(`Digite o número ${contador + 1}: `, (entrada) => {
+        const numero = Number(entrada);
+        if (!isNaN(numero)) {
+          numeros.push(numero);
+          contador++;
+          pedirNumero();
+        } else {
+          console.log("Por favor, digite um número válido.");
+          pedirNumero();
+        }
+      });
+    } else {
+      rl.close();
+      const maior = Math.max(...numeros);
+      console.log("Números digitados:", numeros);
+      console.log("Maior número:", maior);
+    }
+  }
+
+  pedirNumero();
+}
 
 
-// 7 - Encontrar maior número em um array - Kaua
-
-
-
-
-// 8 - Contar vogais em uma string - João
+// 8 - Contar vogais em uma string
 
 
 function contarVogais(texto: string): number {
@@ -211,7 +271,7 @@ function exibirVogaisNoConsole(texto: string): void {
 }
 
 
-// 9 - Calculadora simples - João
+// 9 - Calculadora simples
 
 type Operador = '+' | '-' | '*' | '/';
 
@@ -234,7 +294,7 @@ function calcular(num1: number, num2: number, op: Operador): string {
 }
 
 
-// 10 - Ordenar array em ordem crescente - Gustavo
+// 10 - Ordenar array em ordem crescente
 
 function ordenarArrayCrescente(): void {
   const readline = require('readline');
@@ -258,7 +318,7 @@ function ordenarArrayCrescente(): void {
   });
 }
 
-// 11 - Classe Pessoa - Christian
+// 11 - Classe Pessoa
 
 function perguntarClassPessoa(): void {
   class Pessoa {
@@ -327,7 +387,7 @@ function perguntarClassPessoa(): void {
 }
 
 
-// 12 - Classe Aluno - Chritian
+// 12 - Classe Aluno
 
 
 function mostrarClassAluno() {
@@ -384,7 +444,7 @@ function mostrarClassAluno() {
 }
 
 
-// 13 - Classe Carro - Christian
+// 13 - Classe Carro
 
 function mostrarClassCarro() {
 
@@ -497,11 +557,17 @@ function mostrarClassCarro() {
 }
 
 
-// 14 - Tabuada - Francisco L.
+// 14 - Tabuada
 
+function mostrarTabuada() {
+    const numero = readlineSync.questionInt("Digite um número para ver a tabuada: ");
+    console.log(`\n🧮 Tabuada do ${numero}: `);
+    for (let i = 1; i <= 10; i++) {
+        console.log(`${numero} x ${i} = ${numero * i}`);
+    }
+}
 
-
-// 15 - Calculadora de IMC - Guilherme
+// 15 - Calculadora de IMC
 
 function mostrarIMC() {
   function calcularIMC(peso: number, altura: number): string {
@@ -537,7 +603,7 @@ function mostrarIMC() {
   console.log(resultado);
 }
 
-// 16 - Validar senha - Guilherme
+// 16 - Validar senha
 
 
 function mostrarValidarSenha() {
@@ -572,11 +638,30 @@ function mostrarValidarSenha() {
 
 
 
-// 17 - Jogo de adivinhação - Francisco L.
+// 17 - Jogo de adivinhação
 
+function mostrarJogoDeAdivinhacao() {
+    const numeroSecreto = Math.floor(Math.random() * 100) + 1;
+    console.log("🔢 Tente adivinhar o número entre 1 e 100.");
 
+    let tentativa: number;
+    let tentativas = 0;
 
-// 18 - Contar palavras em uma string - Gustavo
+    do {
+        tentativa = readlineSync.questionInt("Seu palpite: ");
+        tentativas++;
+
+        if (tentativa < numeroSecreto) {
+            console.log("🔻 Muito baixo!");
+        } else if (tentativa > numeroSecreto) {
+            console.log("🔺 Muito alto!");
+        } else {
+            console.log(`🎉 Parabéns! Você acertou em ${tentativas} tentativa(s)!`);
+        }
+    } while (tentativa !== numeroSecreto);
+}
+
+// 18 - Contar palavras em uma string
 
 function mostrarContarPalavras() {
   function contarPalavras(frase: string): number {
